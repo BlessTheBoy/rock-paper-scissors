@@ -2,6 +2,7 @@ import "./App.css";
 import Rules from "./Rules";
 import SelectionBoard from "./SelectionBoard";
 import TopBoard from "./TopBoard";
+import "./scss/App.scss";
 
 function App() {
   return (
