@@ -7,7 +7,6 @@ import "./scss/App.scss";
 function App() {
   return (
     <div className="app">
-      <h1>Hello BlessTheBoy</h1>
       {/* scoreboard */}
       <TopBoard />
 

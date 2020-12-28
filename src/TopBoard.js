@@ -1,10 +1,11 @@
 import React from "react";
 import ScoreBoard from "./ScoreBoard";
+import "./scss/TopBoard.scss";
 
 function TopBoard() {
   return (
-    <div className="scoreBoard">
-      <img src="images/logo.svg" alt="" className="scoreBoard__logo" />
+    <div className="topBoard">
+      <img src="images/logo.svg" alt="" className="topBoard__logo" />
       <ScoreBoard />
     </div>
   );
