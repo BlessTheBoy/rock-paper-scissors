@@ -1,13 +1,20 @@
 @import "variable";
 
 .topBoard {
+  position: relative;
   background: transparent;
-  border: 2px solid white;
-  border-radius: 8px;
-  padding: 1rem;
+  border: 2px solid $HeaderOutline;
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
   margin: 2rem auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 50%;
+
+  &__logo {
+    object-fit: contain;
+    height: 90px;
+    margin-top: 0.3rem;
+  }
 }
