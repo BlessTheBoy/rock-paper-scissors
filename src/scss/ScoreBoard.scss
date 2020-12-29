@@ -1,0 +1,33 @@
+@import "variable";
+
+.scoreBoard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+
+  &__text {
+    color: $ScoreText;
+  }
+  &__score {
+    display: flex;
+    align-items: center;
+
+    .user {
+      margin-right: 1rem;
+
+      &__score {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+    }
+    .computer {
+      margin-left: 1rem;
+
+      &__score {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
