@@ -16,3 +16,12 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .rules {
+    text-align: center;
+    &__button {
+      float: none;
+    }
+  }
+}
