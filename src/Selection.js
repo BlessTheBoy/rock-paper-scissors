@@ -1,7 +1,7 @@
 import React from "react";
 import "./scss/Selection.scss";
 
-function Selection({ color, image }) {
+function Selection({ color, image, element }) {
   return (
     <div
       className="selection"
@@ -12,8 +12,11 @@ function Selection({ color, image }) {
       ${color.shadow}
     )`,
         boxShadow: `0px 8px 0px ${color.background}`,
-      }}>
-      <img src={image} alt="" className="selection__image" />
+      }}
+      data-id={element}>
+      <div className="selection__image">
+        <img src={image} alt="" />
+      </div>
     </div>
   );
 }

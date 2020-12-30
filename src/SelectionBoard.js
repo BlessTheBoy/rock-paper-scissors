@@ -10,30 +10,35 @@ function SelectionBoard() {
         alt=""
         className="selectionBoard__center"
       />
+
       <div className="selectionBoard__selections">
         <Selection
-          image="images/icon-rock.svg"
+          className="paper"
+          image="images/icon-paper.svg"
+          color={{
+            border: "hsl(230, 89%, 62%)",
+            shadow: " hsl(230, 89%, 65%)",
+            background: "#2844BE",
+          }}
+          element="paper"
+        />
+        <Selection
+          image="images/icon-scissors.svg"
           color={{
             border: "hsl(39, 89%, 49%)",
             shadow: " hsl(40, 84%, 53%)",
             background: "#C76C1B",
           }}
+          element="scissors"
         />
         <Selection
           image="images/icon-rock.svg"
           color={{
-            border: "hsl(39, 89%, 49%)",
-            shadow: " hsl(40, 84%, 53%)",
-            background: "#C76C1B",
+            border: "hsl(349, 71%, 52%)",
+            shadow: " hsl(349, 70%, 56%)",
+            background: "#9E1533",
           }}
-        />
-        <Selection
-          image="images/icon-rock.svg"
-          color={{
-            border: "hsl(39, 89%, 49%)",
-            shadow: " hsl(40, 84%, 53%)",
-            background: "#C76C1B",
-          }}
+          element="rock"
         />
       </div>
     </div>
