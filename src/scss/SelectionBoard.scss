@@ -1,0 +1,15 @@
+@import "variable";
+
+.selectionBoard {
+  position: relative;
+  flex: 1;
+
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    width: 200px;
+  }
+}

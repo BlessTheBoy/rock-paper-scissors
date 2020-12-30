@@ -1,0 +1,15 @@
+@import "variable";
+
+.selection {
+  padding: 1rem;
+  border-radius: 50%;
+  width: fit-content;
+  margin-bottom: 1rem;
+  img {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 8px 0px darken(#fff, 7%) inset;
+    margin-bottom: -3px;
+  }
+}
