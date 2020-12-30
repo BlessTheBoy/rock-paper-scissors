@@ -17,11 +17,86 @@
   }
 }
 
+.modal {
+  border: none !important;
+  border-radius: 8px;
+  padding: 1.5rem 2rem !important;
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.7rem;
+    color: hsl(229, 25%, 31%);
+
+    img {
+      object-fit: contain;
+      cursor: pointer;
+      padding: 0.2rem;
+      width: 22px;
+      transition: all ease-in-out 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    img {
+      object-fit: contain;
+      width: 80%;
+      max-width: 300px;
+      margin: 0 auto !important;
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .rules {
     text-align: center;
     &__button {
       float: none;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .modal {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    position: relative;
+
+    &__head {
+      justify-content: center;
+      margin-top: 1rem;
+      h1 {
+        text-align: center;
+      }
+      img {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &:hover {
+          transform: translateX(-50%) scale(1.2);
+        }
+      }
+    }
+
+    &__image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
     }
   }
 }
