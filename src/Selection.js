@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./scss/Selection.scss";
 
 function Selection({ color, image, element }) {
+  const [mobile, setMobile] = useState(true);
+  useEffect(() => {
+    window.innerWidth > 600 ? setMobile(false) : setMobile(true);
+  }, []);
   return (
     <div
       className="selection"
@@ -11,7 +15,7 @@ function Selection({ color, image, element }) {
       ${color.border},
       ${color.shadow}
     )`,
-        boxShadow: `0px 8px 0px ${color.background}`,
+        boxShadow: `0px ${mobile ? "5px" : "8px"} 0px ${color.background}`,
       }}
       data-id={element}>
       <div className="selection__image">

@@ -38,5 +38,28 @@
   }
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 600px) {
+  .selectionBoard {
+    &__center {
+      height: 150px;
+    }
+  }
+  [data-id="rock"] {
+    transform: translate(-50%, 0px);
+    &:hover {
+      transform: scale(1.05) translate(calc(-50% + 2px), -12px);
+    }
+  }
+  [data-id="paper"] {
+    transform: translate(-126px, -125px);
+    &:hover {
+      transform: scale(1.05) translate(-118px, -115px);
+    }
+  }
+  [data-id="scissors"] {
+    transform: translate(28px, -125px);
+    &:hover {
+      transform: scale(1.1) translate(23px, -115px);
+    }
+  }
 }

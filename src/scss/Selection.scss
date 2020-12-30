@@ -26,3 +26,20 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .selection {
+    padding: 0.7rem;
+    &__image {
+      width: 75px;
+      height: 75px;
+      padding: 1.3rem;
+      margin: 0;
+      box-shadow: 0px 6px 0px darken(#fff, 7%) inset;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
