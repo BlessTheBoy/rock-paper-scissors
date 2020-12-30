@@ -6,7 +6,7 @@
   border: 2px solid $HeaderOutline;
   border-radius: 1rem;
   padding: 0.8rem 1rem;
-  margin: 2rem auto 0;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,5 +16,30 @@
     object-fit: contain;
     height: 90px;
     margin-top: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .topBoard {
+    width: 90%;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .topBoard {
+    &__logo {
+      height: 70px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .topBoard {
+    &__logo {
+      height: 55px;
+    }
+    margin: 0;
+    width: 100%;
   }
 }

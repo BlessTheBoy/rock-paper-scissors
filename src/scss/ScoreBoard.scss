@@ -3,15 +3,15 @@
 .scoreBoard {
   background-color: white;
   border-radius: 8px;
-  padding: 0.5rem;
+  padding: 0.5em;
   text-align: center;
   width: fit-content;
 
   &__text {
     color: $ScoreText;
     line-height: 1;
-    padding-top: 0.1rem;
-    margin-bottom: -0.4rem;
+    padding-top: 0.1em;
+    margin-bottom: -0.4em;
   }
   &__score {
     display: flex;
@@ -19,45 +19,94 @@
     justify-content: space-evenly;
 
     .user {
-      margin-right: 2rem;
+      margin-right: 2em;
       width: 75px;
 
       &__score {
-        font-size: 2.2rem;
+        font-size: 2.2em;
         font-weight: 700;
         color: $DarkText;
         line-height: 1;
       }
       &__name {
-        font-size: 0.8rem;
+        font-size: 0.8em;
         line-height: 1;
         font-weight: 700;
       }
     }
     .computer {
-      margin-left: 2rem;
+      margin-left: 2em;
       width: 75px;
 
       &__score {
-        font-size: 2.2rem;
+        font-size: 2.2em;
         font-weight: 700;
         color: $DarkText;
         line-height: 1;
       }
       &__name {
-        font-size: 0.8rem;
+        font-size: 0.8em;
         line-height: 1;
         font-weight: 700;
       }
     }
   }
   .ties {
-    font-size: 0.75rem;
+    font-size: 0.75em;
     font-style: italic;
     color: $HeaderOutline;
 
     span {
       font-weight: 700;
     }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .scoreBoard {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+
+    &__text {
+      margin-bottom: 0.2rem;
+    }
+
+    &__score {
+      .user {
+        width: 55px;
+        margin-left: -5px;
+      }
+      .computer {
+        width: 55px;
+      }
+    }
+
+    .ties {
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .scoreBoard {
+    font-size: 0.75rem;
+
+    &__score {
+      .user {
+        width: 45px;
+        margin-right: 0.1em;
+      }
+      .computer {
+        width: 45px;
+        margin-left: 0.2em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .scoreBoard {
+    font-size: 0.6rem;
+    padding: 0.5rem 0.3rem;
   }
 }

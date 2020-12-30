@@ -13,9 +13,6 @@
     // width: 200px;
     height: 200px;
   }
-
-  &__selections {
-  }
 }
 [data-id] {
   position: absolute;
@@ -39,4 +36,7 @@
   &:hover {
     transform: scale(1.1) translate(30px, -155px);
   }
+}
+
+@media screen and (max-width: 860px) {
 }
