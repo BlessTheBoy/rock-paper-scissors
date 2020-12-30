@@ -24,10 +24,19 @@
 }
 [data-id="rock"] {
   transform: translate(-50%, 22px);
+  &:hover {
+    transform: scale(1.1) translate(calc(-50% + 10px), 10px);
+  }
 }
 [data-id="paper"] {
   transform: translate(-176px, -175px);
+  &:hover {
+    transform: scale(1.1) translate(-156px, -155px);
+  }
 }
 [data-id="scissors"] {
   transform: translate(30px, -175px);
+  &:hover {
+    transform: scale(1.1) translate(30px, -155px);
+  }
 }
