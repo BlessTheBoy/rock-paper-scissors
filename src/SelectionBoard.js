@@ -3,19 +3,6 @@ import Selection from "./Selection";
 import "./scss/SelectionBoard.scss";
 
 function SelectionBoard() {
-  const selected = (element) => {
-    // body of function
-    if (element === 0) {
-      console.log("Paper Selected");
-    } else if (element === 1) {
-      console.log("Scissors Selected");
-    } else if (element === 2) {
-      console.log("Rock Selected");
-    } else {
-      console.log("Unknown Selection");
-    }
-  };
-
   const [selections, setSelections] = useState([
     {
       image: "images/icon-paper.svg",
@@ -56,7 +43,7 @@ function SelectionBoard() {
       <div className="selectionBoard__selections">
         {selections.map((selection) => (
           <Selection
-            onClick={() => selected(selection.element)}
+            key={selection.element}
             image={selection.image}
             color={selection.color}
             element={selection.element}

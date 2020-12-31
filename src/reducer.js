@@ -4,12 +4,21 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "WIN":
+    case "OPTION-SELECTED":
       // increase player score by 1
-      break;
-    case "LOSS":
+      let choice = action.element;
+      return state;
+    case "CHOOSE-WINNER":
       // increase computer score by 1
-      break;
+      let playerChoice = action.element;
+      let botChoice = ["rock", "paper", "scissors"][
+        Math.floor(Math.random() * 3)
+      ];
+      let winner = decideWinner(playerChoice, botChoice);
+      console.log("You chose: ", playerChoice);
+      console.log("The Computer chose: ", botChoice);
+      console.log("And the winner is: ", winner);
+      return state;
     case "TIE":
       // increase ties by 1
       break;
@@ -18,5 +27,15 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
+function decideWinner(yourChoice, computerChoice) {
+  var rpsDataBase = {
+    rock: { rock: "ties", paper: "computer", scissors: "you" },
+    paper: { rock: "you", paper: "ties", scissors: "computer" },
+    scissors: { rock: "computer", paper: "you", scissors: "ties" },
+  };
+
+  return rpsDataBase[yourChoice][computerChoice];
+}
 
 export default reducer;
