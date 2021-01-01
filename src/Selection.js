@@ -3,22 +3,29 @@ import "./scss/Selection.scss";
 import { useStateValue } from "./StateProvider";
 
 function Selection({ color, image, element }) {
-  const [{}, dispatch] = useStateValue();
+  const [{ clicked }, dispatch] = useStateValue();
 
   const [mobile, setMobile] = useState(true);
   useEffect(() => {
     window.innerWidth > 600 ? setMobile(false) : setMobile(true);
   }, []);
 
-  const clicked = () => {
+  const selectionClicked = () => {
     dispatch({
-      type: "CHOOSE-WINNER",
+      type: "OPTION-SELECTED",
       element,
     });
+
+    setTimeout(function () {
+      dispatch({
+        type: "CHOOSE-WINNER",
+        element,
+      });
+    }, 3000);
   };
   return (
     <div
-      className="selection"
+      className={`${clicked && "clicked"} selection`}
       style={{
         backgroundImage: `linear-gradient(
       to bottom,
@@ -27,8 +34,8 @@ function Selection({ color, image, element }) {
     )`,
         boxShadow: `0px ${mobile ? "5px" : "8px"} 0px ${color.background}`,
       }}
-      data-id={element}
-      onClick={() => clicked()}>
+      data-id={element && element}
+      onClick={() => selectionClicked()}>
       <div className="selection__image">
         <img src={image} alt="" />
       </div>

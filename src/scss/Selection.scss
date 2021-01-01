@@ -25,6 +25,18 @@
       object-fit: contain;
     }
   }
+
+  &.clicked {
+    padding: 1.5rem;
+    .selection__image {
+      width: 150px;
+      height: 150px;
+      img {
+        object-fit: contain;
+        width: 70px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -39,6 +51,18 @@
 
       img {
         width: 100%;
+      }
+    }
+
+    &.clicked {
+      padding: 0.9rem;
+      .selection__image {
+        width: 90px;
+        height: 90px;
+        img {
+          object-fit: contain;
+          width: 45px;
+        }
       }
     }
   }

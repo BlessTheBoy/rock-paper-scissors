@@ -1,13 +1,55 @@
 export const initialState = {
   score: { you: 10, computer: 0, ties: 5 },
+  selections: [
+    {
+      image: "images/icon-paper.svg",
+      color: {
+        border: "hsl(230, 89%, 62%)",
+        shadow: " hsl(230, 89%, 65%)",
+        background: "#2844BE",
+      },
+      element: "paper",
+    },
+    {
+      image: "images/icon-scissors.svg",
+      color: {
+        border: "hsl(39, 89%, 49%)",
+        shadow: " hsl(40, 84%, 53%)",
+        background: "#C76C1B",
+      },
+      element: "scissors",
+    },
+    {
+      image: "images/icon-rock.svg",
+      color: {
+        border: "hsl(349, 71%, 52%)",
+        shadow: " hsl(349, 70%, 56%)",
+        background: "#9E1533",
+      },
+      element: "rock",
+    },
+  ],
+  clicked: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "OPTION-SELECTED":
-      // increase player score by 1
-      let choice = action.element;
-      return state;
+      let playerSelection = state.selections.filter(
+        (selection) => selection.element === action.element
+      );
+
+      return {
+        ...state,
+        selections: [
+          {
+            image: playerSelection[0].image,
+            color: playerSelection[0].color,
+            element: null,
+          },
+        ],
+        clicked: true,
+      };
     case "CHOOSE-WINNER":
       // increase computer score by 1
       let playerChoice = action.element;
