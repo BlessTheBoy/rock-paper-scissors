@@ -16,15 +16,32 @@ function SelectionBoard() {
       )}
 
       <div className="selectionBoard__selections">
-        {selections?.map((selection) => (
-          <Selection
-            key={selection.element}
-            image={selection.image}
-            color={selection.color}
-            element={selection.element}
-          />
-        ))}
-        {clicked && <div className="emptySelection"></div>}
+        {selections?.map((selection) =>
+          selection.header ? (
+            <div className="selectionBoard__selection">
+              <h2>{selection.header}</h2>
+              <Selection
+                key={selection.element}
+                image={selection.image}
+                color={selection.color}
+                element={selection.element}
+              />
+            </div>
+          ) : (
+            <Selection
+              key={selection.element}
+              image={selection.image}
+              color={selection.color}
+              element={selection.element}
+            />
+          )
+        )}
+        {selections?.length === 1 && (
+          <div className="selectionBoard__selection empty">
+            <h2>THE HOUSE PICKED</h2>
+            <div className="emptySelection"></div>
+          </div>
+        )}
       </div>
     </div>
   );

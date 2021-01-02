@@ -1,50 +1,53 @@
+const allSelections = [
+  {
+    image: "images/icon-paper.svg",
+    color: {
+      border: "hsl(230, 89%, 62%)",
+      shadow: " hsl(230, 89%, 65%)",
+      background: "#2844BE",
+    },
+    element: "paper",
+  },
+  {
+    image: "images/icon-scissors.svg",
+    color: {
+      border: "hsl(39, 89%, 49%)",
+      shadow: " hsl(40, 84%, 53%)",
+      background: "#C76C1B",
+    },
+    element: "scissors",
+  },
+  {
+    image: "images/icon-rock.svg",
+    color: {
+      border: "hsl(349, 71%, 52%)",
+      shadow: " hsl(349, 70%, 56%)",
+      background: "#9E1533",
+    },
+    element: "rock",
+  },
+];
+var playerSelection, botSelection;
 export const initialState = {
   score: { you: 10, computer: 0, ties: 5 },
-  selections: [
-    {
-      image: "images/icon-paper.svg",
-      color: {
-        border: "hsl(230, 89%, 62%)",
-        shadow: " hsl(230, 89%, 65%)",
-        background: "#2844BE",
-      },
-      element: "paper",
-    },
-    {
-      image: "images/icon-scissors.svg",
-      color: {
-        border: "hsl(39, 89%, 49%)",
-        shadow: " hsl(40, 84%, 53%)",
-        background: "#C76C1B",
-      },
-      element: "scissors",
-    },
-    {
-      image: "images/icon-rock.svg",
-      color: {
-        border: "hsl(349, 71%, 52%)",
-        shadow: " hsl(349, 70%, 56%)",
-        background: "#9E1533",
-      },
-      element: "rock",
-    },
-  ],
+  selections: [...allSelections],
   clicked: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "OPTION-SELECTED":
-      let playerSelection = state.selections.filter(
+      playerSelection = allSelections.filter(
         (selection) => selection.element === action.element
-      );
+      )[0];
 
       return {
         ...state,
         selections: [
           {
-            image: playerSelection[0].image,
-            color: playerSelection[0].color,
+            image: playerSelection.image,
+            color: playerSelection.color,
+            header: "YOU PICKED",
             element: null,
           },
         ],
@@ -52,15 +55,30 @@ const reducer = (state, action) => {
       };
     case "CHOOSE-WINNER":
       // increase computer score by 1
-      let playerChoice = action.element;
       let botChoice = ["rock", "paper", "scissors"][
         Math.floor(Math.random() * 3)
       ];
-      let winner = decideWinner(playerChoice, botChoice);
-      console.log("You chose: ", playerChoice);
+      botSelection = allSelections.filter(
+        (selection) => selection.element === botChoice
+      )[0];
+      let winner = decideWinner(action.element, botChoice);
+      console.log("You chose: ", action.element);
       console.log("The Computer chose: ", botChoice);
       console.log("And the winner is: ", winner);
-      return state;
+
+      return {
+        ...state,
+        selections: [
+          state.selections[0],
+          {
+            image: botSelection.image,
+            color: botSelection.color,
+            header: "THE HOUSE PICKED",
+            element: null,
+          },
+        ],
+        clicked: true,
+      };
     case "TIE":
       // increase ties by 1
       break;
