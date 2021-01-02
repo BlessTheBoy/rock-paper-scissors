@@ -5,6 +5,14 @@ import { useStateValue } from "./StateProvider";
 
 function SelectionBoard() {
   const [{ score, selections, clicked, winner }, dispatch] = useStateValue();
+
+  const resetBoard = () => {
+    console.log("reseting board 000");
+    dispatch({
+      type: "RESET-BOARD",
+    });
+  };
+
   return (
     <div className="selectionBoard">
       {!clicked && (
@@ -53,7 +61,7 @@ function SelectionBoard() {
           ) : (
             <h3>TIE</h3>
           )}
-          <button>PLAY AGAIN</button>
+          <button onClick={() => resetBoard()}>PLAY AGAIN</button>
         </div>
       )}
     </div>

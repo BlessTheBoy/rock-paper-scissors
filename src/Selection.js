@@ -26,7 +26,7 @@ function Selection({ color, image, element, winner }) {
       dispatch({
         type: "REVEAL-WINNER",
       });
-    }, 5000);
+    }, 4000);
   };
   return (
     <div

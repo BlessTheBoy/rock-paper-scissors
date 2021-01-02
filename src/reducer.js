@@ -121,6 +121,12 @@ const reducer = (state, action) => {
       }
       return { ...state, winner };
 
+    case "RESET-BOARD":
+      return {
+        score: { you: 10, computer: 0, ties: 5 },
+        selections: [...allSelections],
+        clicked: false,
+      };
     default:
       return state;
   }
