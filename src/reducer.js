@@ -27,9 +27,19 @@ const allSelections = [
     element: "rock",
   },
 ];
-var playerSelection, botSelection, winner;
+var playerSelection, botSelection, winner, scoreCount;
+if (localStorage.scoreCount) {
+  scoreCount = localStorage.scoreCount;
+} else {
+  localStorage.setItem(
+    "scoreCount",
+    JSON.stringify({ you: 0, computer: 0, ties: 0 })
+  );
+}
+scoreCount = JSON.parse(localStorage.scoreCount);
+
 export const initialState = {
-  score: { you: 0, computer: 0, ties: 0 },
+  score: scoreCount,
   selections: [...allSelections],
   clicked: false,
 };
@@ -82,6 +92,10 @@ const reducer = (state, action) => {
     case "REVEAL-WINNER":
       // increase ties by 1
       if (winner === "you") {
+        localStorage.scoreCount = JSON.stringify({
+          ...state.score,
+          you: state.score.you + 1,
+        });
         return {
           ...state,
           selections: [
@@ -104,6 +118,10 @@ const reducer = (state, action) => {
           winner,
         };
       } else if (winner === "computer") {
+        localStorage.scoreCount = JSON.stringify({
+          ...state.score,
+          computer: state.score.computer + 1,
+        });
         return {
           ...state,
           selections: [
@@ -121,6 +139,10 @@ const reducer = (state, action) => {
           winner,
         };
       }
+      localStorage.scoreCount = JSON.stringify({
+        ...state.score,
+        ties: state.score.ties + 1,
+      });
       return {
         ...state,
         winner,

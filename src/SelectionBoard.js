@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Selection from "./Selection";
 import "./scss/SelectionBoard.scss";
 import { useStateValue } from "./StateProvider";
+import { Animated } from "react-animated-css";
 
 function SelectionBoard() {
   const [{ score, selections, clicked, winner }, dispatch] = useStateValue();
@@ -53,8 +54,12 @@ function SelectionBoard() {
         )}
       </div>
       {winner && (
-        <div
-          className={`winnerReveal animate__animated animate__fadeInUp ${
+        <Animated
+          animationIn="fadeInUp"
+          animationOut="fadeOut"
+          isVisible={true}
+          animationInDuration={1000}
+          className={`winnerReveal animate__animated animate__bounce ${
             clicked && "clicked"
           }`}>
           {winner === "you" ? (
@@ -65,7 +70,7 @@ function SelectionBoard() {
             <h3>TIE</h3>
           )}
           <button onClick={() => resetBoard()}>PLAY AGAIN</button>
-        </div>
+        </Animated>
       )}
     </div>
   );
