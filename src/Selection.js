@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./scss/Selection.scss";
 import { useStateValue } from "./StateProvider";
 
-function Selection({ color, image, element }) {
+function Selection({ color, image, element, winner }) {
   const [{ clicked }, dispatch] = useStateValue();
 
   const [mobile, setMobile] = useState(true);
@@ -22,10 +22,15 @@ function Selection({ color, image, element }) {
         element,
       });
     }, 3000);
+    setTimeout(function () {
+      dispatch({
+        type: "REVEAL-WINNER",
+      });
+    }, 5000);
   };
   return (
     <div
-      className={`${clicked && "clicked"} selection`}
+      className={` selection ${clicked && "clicked"} ${winner && "winner"}`}
       style={{
         backgroundImage: `linear-gradient(
       to bottom,

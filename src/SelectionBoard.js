@@ -4,7 +4,7 @@ import "./scss/SelectionBoard.scss";
 import { useStateValue } from "./StateProvider";
 
 function SelectionBoard() {
-  const [{ score, selections, clicked }, dispatch] = useStateValue();
+  const [{ score, selections, clicked, winner }, dispatch] = useStateValue();
   return (
     <div className="selectionBoard">
       {!clicked && (
@@ -15,7 +15,7 @@ function SelectionBoard() {
         />
       )}
 
-      <div className="selectionBoard__selections">
+      <div className={`selectionBoard__selections ${clicked && "clicked"}`}>
         {selections?.map((selection) =>
           selection.header ? (
             <div className="selectionBoard__selection">
@@ -25,6 +25,7 @@ function SelectionBoard() {
                 image={selection.image}
                 color={selection.color}
                 element={selection.element}
+                winner={selection.winner}
               />
             </div>
           ) : (
@@ -43,6 +44,18 @@ function SelectionBoard() {
           </div>
         )}
       </div>
+      {winner && (
+        <div className={`winnerReveal ${clicked && "clicked"}`}>
+          {winner === "you" ? (
+            <h3>YOU WIN</h3>
+          ) : winner === "computer" ? (
+            <h3>YOU LOSE</h3>
+          ) : (
+            <h3>TIE</h3>
+          )}
+          <button>PLAY AGAIN</button>
+        </div>
+      )}
     </div>
   );
 }

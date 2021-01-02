@@ -27,7 +27,7 @@ const allSelections = [
     element: "rock",
   },
 ];
-var playerSelection, botSelection;
+var playerSelection, botSelection, winner;
 export const initialState = {
   score: { you: 10, computer: 0, ties: 5 },
   selections: [...allSelections],
@@ -61,7 +61,7 @@ const reducer = (state, action) => {
       botSelection = allSelections.filter(
         (selection) => selection.element === botChoice
       )[0];
-      let winner = decideWinner(action.element, botChoice);
+      winner = decideWinner(action.element, botChoice);
       console.log("You chose: ", action.element);
       console.log("The Computer chose: ", botChoice);
       console.log("And the winner is: ", winner);
@@ -79,9 +79,47 @@ const reducer = (state, action) => {
         ],
         clicked: true,
       };
-    case "TIE":
+    case "REVEAL-WINNER":
       // increase ties by 1
-      break;
+      if (winner === "you") {
+        return {
+          ...state,
+          selections: [
+            {
+              image: playerSelection.image,
+              color: playerSelection.color,
+              header: "YOU PICKED",
+              element: null,
+              winner: true,
+            },
+            {
+              image: botSelection.image,
+              color: botSelection.color,
+              header: "THE HOUSE PICKED",
+              element: null,
+            },
+          ],
+          clicked: true,
+          winner,
+        };
+      } else if (winner === "computer") {
+        return {
+          ...state,
+          selections: [
+            state.selections[0],
+            {
+              image: botSelection.image,
+              color: botSelection.color,
+              header: "THE HOUSE PICKED",
+              element: null,
+              winner: true,
+            },
+          ],
+          clicked: true,
+          winner,
+        };
+      }
+      return { ...state, winner };
 
     default:
       return state;

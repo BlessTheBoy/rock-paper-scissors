@@ -1,5 +1,24 @@
 @import "variable";
 
+@keyframes winnerPulse {
+  0% {
+    box-shadow: 0 0 0 240px rgba(255, 255, 255, 0.008),
+      0 0 0 190px rgba(255, 255, 255, 0.015),
+      0 0 0 110px rgba(255, 255, 255, 0.04), 0 0 0 0 rgba(255, 255, 255, 0.08);
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 0 300px rgba(255, 255, 255, 0),
+      0 0 0 250px rgba(255, 255, 255, 0.008),
+      0 0 0 180px rgba(255, 255, 255, 0.015),
+      0 0 0 100px rgba(255, 255, 255, 0.04);
+    transform: scale(1);
+  }
+}
+
 .selection {
   padding: 1.2rem;
   border-radius: 50%;
@@ -8,6 +27,10 @@
   z-index: 2;
   cursor: pointer;
   transition: all ease-in-out 0.4s;
+
+  &.winner {
+    animation: winnerPulse 2s infinite;
+  }
 
   &__image {
     width: 112px;
