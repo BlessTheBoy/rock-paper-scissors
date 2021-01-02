@@ -53,7 +53,10 @@ function SelectionBoard() {
         )}
       </div>
       {winner && (
-        <div className={`winnerReveal ${clicked && "clicked"}`}>
+        <div
+          className={`winnerReveal animate__animated animate__fadeInUp ${
+            clicked && "clicked"
+          }`}>
           {winner === "you" ? (
             <h3>YOU WIN</h3>
           ) : winner === "computer" ? (

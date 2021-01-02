@@ -29,7 +29,7 @@ const allSelections = [
 ];
 var playerSelection, botSelection, winner;
 export const initialState = {
-  score: { you: 10, computer: 0, ties: 5 },
+  score: { you: 0, computer: 0, ties: 0 },
   selections: [...allSelections],
   clicked: false,
 };
