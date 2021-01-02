@@ -99,6 +99,7 @@ const reducer = (state, action) => {
               element: null,
             },
           ],
+          score: { ...state.score, you: state.score.you + 1 },
           clicked: true,
           winner,
         };
@@ -115,15 +116,20 @@ const reducer = (state, action) => {
               winner: true,
             },
           ],
+          score: { ...state.score, computer: state.score.computer + 1 },
           clicked: true,
           winner,
         };
       }
-      return { ...state, winner };
+      return {
+        ...state,
+        winner,
+        score: { ...state.score, ties: state.score.ties + 1 },
+      };
 
     case "RESET-BOARD":
       return {
-        score: { you: 10, computer: 0, ties: 5 },
+        score: state.score,
         selections: [...allSelections],
         clicked: false,
       };
