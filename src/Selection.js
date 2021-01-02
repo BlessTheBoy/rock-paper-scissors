@@ -40,7 +40,7 @@ function Selection({ color, image, element, winner }) {
         boxShadow: `0px ${mobile ? "5px" : "8px"} 0px ${color.background}`,
       }}
       data-id={element && element}
-      onClick={() => selectionClicked()}>
+      onClick={() => element && selectionClicked()}>
       <div className="selection__image">
         <img src={image} alt="" />
       </div>
